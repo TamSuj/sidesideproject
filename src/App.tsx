@@ -15,6 +15,12 @@ type ExperienceItem = {
   logoSrc: string
 }
 
+type SkillCategory = {
+  id: string
+  label: string
+  pills: string[]
+}
+
 const experienceData: ExperienceItem[] = [
   {
     id: 'role-1',
@@ -52,6 +58,62 @@ const experienceData: ExperienceItem[] = [
     details: 'Optional brief description or focus of this position.',
     logoSrc: caltechLogo
   }
+]
+
+const skillsByCategory: SkillCategory[] = [
+  {
+    id: 'languages',
+    label: 'Languages',
+    pills: [
+      'C++',
+      'Python',
+      'Java',
+      'JavaScript',
+      'CSS',
+      'HTML',
+      'SQL',
+      'TypeScript',
+      'ASP.Net',
+      'Scala',
+      'YAML',
+      'Shell',
+    ],
+  },
+  {
+    id: 'frameworks',
+    label: 'Frameworks',
+    pills: [
+      'React',
+      'GraphQL',
+      'Node.js',
+      'Tailwind',
+      'REST APIs',
+      'Scikit-learn',
+      'Biopython',
+      'Sphinx',
+      'Agile (Scrum/Kanban)',
+    ],
+  },
+  {
+    id: 'developer-tools',
+    label: 'Developer Tools',
+    pills: ['Git', 'AWS', 'Azure (certified)', 'DBeaver', 'CI/CD'],
+  },
+  {
+    id: 'libraries',
+    label: 'Libraries',
+    pills: [
+      'Apache Hadoop',
+      'PyTorch',
+      'Playwright',
+      'PyTest',
+      'Scikit-learn',
+      'pandas',
+      'NumPy',
+      'Matplotlib',
+      'Seaborn',
+    ],
+  },
 ]
 
 function App() {
@@ -178,8 +240,12 @@ function App() {
               >
                 <p style={{ margin: 0, fontSize: '16px', lineHeight: '1.4' }}>
                   {selectedSection === 'Experience'
-                    ? 'Here are some of my recent roles:'
-                    : selectedSection}
+                    ? "Here's what I've worked on"
+                    : selectedSection === 'Skills'
+                      ? "Here's what I can do"
+                    : selectedSection === 'Projects'
+                      ? "Here's what I've built"
+                      : ''}
                 </p>
               </div>
             </div>
@@ -210,6 +276,34 @@ function App() {
                   </article>
                 ))}
               </div>
+            )}
+            {/* Skills cards as part of the chat flow – one white card per category */}
+            {selectedSection === 'Skills' && (
+              <>
+                {skillsByCategory.map((category) => (
+                  <div
+                    key={category.id}
+                    className="skills-category-row"
+                    aria-label={category.label}
+                  >
+                    <div className="skills-category-card">
+                      <header className="skills-category-header">
+                        <h3 className="skills-category-title">{category.label}</h3>
+                      </header>
+                      <div className="skills-section__pills">
+                        {category.pills.map((pill) => (
+                          <span
+                            key={`${category.id}-${pill}`}
+                            className={`skills-pill skills-pill--${category.id}`}
+                          >
+                            {pill}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </>
             )}
           </>
         )}

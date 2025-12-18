@@ -194,3 +194,96 @@
   font-size: 0.85rem;
   color: #4b5563;
 }
+
+/* Skills categories as separate white cards in the chat */
+.skills-category-row {
+  margin-top: 0.9rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.skills-category-card {
+  width: 100%;
+  border-radius: 22px;
+  background: #ffffff;
+  box-shadow:
+    0 18px 40px rgba(15, 23, 42, 0.18),
+    0 0 0 1px rgba(148, 163, 184, 0.1);
+  padding: 1rem 1.25rem 1.05rem;
+  text-align: left;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+}
+
+.skills-category-header {
+  margin-bottom: 0.55rem;
+}
+
+.skills-category-eyebrow {
+  margin: 0;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #6b7280;
+}
+
+.skills-category-title {
+  margin: 0.15rem 0 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.skills-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.skills-section__label {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.skills-section__pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.skills-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.18rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 500;
+  border: 1px solid transparent;
+  backdrop-filter: blur(12px);
+  white-space: nowrap;
+}
+
+.skills-pill--languages {
+  background: rgba(255, 255, 255, 0.16); /* slate-400 */
+  color: #111827;
+  border-color: rgba(148, 163, 184, 0.4);
+}
+
+.skills-pill--frameworks {
+  background: rgba(255, 255, 255, 0.16);
+  color: #111827;
+  border-color: rgba(148, 163, 184, 0.4);
+}
+
+.skills-pill--developer-tools {
+  background: rgba(255, 255, 255, 0.16);
+  color: #111827;
+  border-color: rgba(148, 163, 184, 0.4);
+}
+
+.skills-pill--libraries {
+  background: rgba(255, 255, 255, 0.16);
+  color: #111827;
+  border-color: rgba(148, 163, 184, 0.4);
+}
