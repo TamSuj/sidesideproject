@@ -4,6 +4,10 @@ import caltechLogo from './assets/caltech.jpg'
 import linkedinLogo from './assets/linkedin.png'
 import uberLogo from './assets/uber.jpg'
 import agodaLogo from './assets/agoda.png'
+import portrait from './assets/portrait.png'
+import smilesforspeech from './assets/smilesforspeech.jpg'
+import journeyai from './assets/journeyai.png'
+import studygram from './assets/studygram.png'  
 
 type ExperienceItem = {
   id: string
@@ -21,6 +25,20 @@ type SkillCategory = {
   pills: string[]
 }
 
+type ProjectItem = {
+  id: string
+  title: string
+  tag: string
+  summary: string
+  impact: string
+  tech: string[]
+  linkLabel: string
+  linkHref: string
+  featured?: boolean
+  imageSrc: string
+  imageAlt: string
+}
+
 const experienceData: ExperienceItem[] = [
   {
     id: 'role-1',
@@ -28,7 +46,7 @@ const experienceData: ExperienceItem[] = [
     title: 'Software Engineer Intern',
     company: 'Uber',
     period: 'Sept 2025 – Nov 2025',
-    details: 'Short one-line summary of what you worked on in this role.',
+    details: 'Uber Eats - Payments',
     logoSrc: uberLogo
   },
   {
@@ -37,7 +55,7 @@ const experienceData: ExperienceItem[] = [
     title: 'Software Engineer Intern',
     company: 'LinkedIn',
     period: 'June 2025 – Sept 2025',
-    details: 'Another short one-line summary of your impact here.',
+    details: 'LinkedIn Ads - Advertiser Values',
     logoSrc: linkedinLogo
   },
   {
@@ -46,7 +64,7 @@ const experienceData: ExperienceItem[] = [
     title: 'Software Engineer Intern',
     company: 'Agoda',
     period: 'Jan 2024 – May 2024',
-    details: 'Optional brief description or focus of this position.',
+    details: 'Trips - Database Visualization tool',
     logoSrc: agodaLogo
   },
   {
@@ -55,7 +73,7 @@ const experienceData: ExperienceItem[] = [
     title: 'Software Engineer Intern',
     company: 'California Institute of Technology (Caltech)',
     period: 'Jan 2024 – May 2024',
-    details: 'Optional brief description or focus of this position.',
+    details: 'Computational Biology',
     logoSrc: caltechLogo
   }
 ]
@@ -91,13 +109,13 @@ const skillsByCategory: SkillCategory[] = [
       'Scikit-learn',
       'Biopython',
       'Sphinx',
-      'Agile (Scrum/Kanban)',
+      'Agile',
     ],
   },
   {
     id: 'developer-tools',
     label: 'Developer Tools',
-    pills: ['Git', 'AWS', 'Azure (certified)', 'DBeaver', 'CI/CD'],
+    pills: ['Git', 'AWS', 'Azure', 'DBeaver', 'CI/CD'],
   },
   {
     id: 'libraries',
@@ -116,16 +134,98 @@ const skillsByCategory: SkillCategory[] = [
   },
 ]
 
+const projectData: ProjectItem[] = [
+  {
+    id: 'project-smiles',
+    title: 'Smiles for Speech: Early Autism Detection Tool',
+    tag: 'Hackathon',
+    summary: 'Mobile-friendly web app helping parents in Ghana spot early signs of autism and access trusted resources.',
+    impact: 'Guided screening + AI-suggested next steps to make early intervention more accessible where specialists are scarce.',
+    tech: ['React', 'Firebase', 'Tailwind', 'Gemini API'],
+    linkLabel: 'View case study',
+    linkHref: 'https://devpost.com/software/smiles-for-speech-early-autism-detection-tool',
+    featured: true,
+    imageSrc: smilesforspeech,
+    imageAlt: 'Parent holding child, soft teal background',
+  },
+  {
+    id: 'project-studygram',
+    title: 'Studygram',
+    tag: 'Full-stack · Community',
+    summary: 'Online community for students to share study resources, tips, and stay accountable together.',
+    impact: 'Built feed, profiles, search, and file uploads so students can actually reuse and discover helpful study content.',
+    tech: ['React', 'Node.js', 'Express', 'MongoDB', 'Tailwind'],
+    linkLabel: 'View on GitHub',
+    linkHref: 'https://github.com/TamSuj/Studygram',
+    imageSrc: studygram,
+    imageAlt: 'Students studying with laptops and notebooks',
+  },
+  {
+    id: 'project-journeyai',
+    title: 'JourneyAI',
+    tag: 'AI · Travel assistant',
+    summary: 'One-click itinerary planner that generates interactive, map-based trips using Gemini-powered suggestions.',
+    impact: 'Turns a few preferences into a structured, editable itinerary so friends can agree on plans faster.',
+    tech: ['React', 'Gemini API', 'Map APIs', 'CSS'],
+    linkLabel: 'View on GitHub',
+    linkHref: 'https://github.com/TamSuj/JourneyAI',
+    imageSrc: journeyai,
+    imageAlt: 'JourneyAI landing page: Plan your trip in one click',
+  },
+]
+
 function App() {
 
   const [selectedSection, setSelectedSection] = useState<string | null>(null)
 
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#F2F2F7', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}>
+    <div style={{ minHeight: '100vh', backgroundColor: '#F2F2F7', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: '', padding: '1rem' }}>
       {/* Make the picture circle and center it */}
-        {/* <img src={portrait} alt="Tammy's portrait" className="w-1/2 h-1/2 rounded-full" /> */}
-
       <div style={{ width: '100%', maxWidth: '28rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+        {/* Chat-style profile header */}
+        <header className="chat-header">
+          <div className="chat-header__avatar-wrap">
+            <img
+              src={portrait}
+              alt="Tammy"
+              className="chat-header__avatar"
+            />
+          </div>
+          <div className="chat-header__main">
+            <div className="chat-header__top-row">
+              <span className="chat-header__name">Tammy Sujaritchai</span>
+              <div className="chat-header__actions">
+                <a
+                  href="https://www.linkedin.com/in/tammy-suj/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="chat-header__icon-button"
+                  aria-label="Open LinkedIn profile"
+                >
+                  <img
+                    src={linkedinLogo}
+                    alt=""
+                    className="chat-header__icon-image"
+                    aria-hidden="true"
+                  />
+                </a>
+                <a
+                  href="mailto:gtsujaritchai@g.ucla.edu"
+                  className="chat-header__icon-button"
+                  aria-label="Send email"
+                >
+                  <span className="chat-header__icon-emoji">✉️</span>
+                </a>
+              </div>
+            </div>
+            <div className="chat-header__status-row">
+              <span className="chat-header__status-dot" aria-hidden="true" />
+              <span className="chat-header__status-text">Active now</span>
+            </div>
+          </div>
+        </header>
+
+        {/* Message 1 */}
         {/* Message 1 */}
         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
           <div 
@@ -170,7 +270,7 @@ function App() {
               boxShadow: '0 1px 2px rgba(0,0,0,0.1)'
             }}
           >
-            <p style={{ margin: 0, fontSize: '16px', lineHeight: '1.4' }}>Tap a card below 👇</p>
+            <p style={{ margin: 0, fontSize: '16px', lineHeight: '1.4' }}>Tap any card below 👇</p>
           </div>
         </div>
 
@@ -305,6 +405,58 @@ function App() {
                   </div>
                 ))}
               </>
+            )}
+
+            {/* Projects section */}
+            {selectedSection === 'Projects' && (
+              <div className="projects-list">
+                {projectData.map((project) => (
+                  <article
+                    key={project.id}
+                    className={`project-card${project.featured ? ' project-card--featured' : ''}`}
+                  >
+                    <div className="project-card__body">
+                      <div className="project-card__media" aria-hidden="true">
+                        <img
+                          src={project.imageSrc}
+                          alt={project.imageAlt}
+                          className="project-card__image"
+                        />
+                      </div>
+                      <div className="project-card__content">
+                        {project.featured && (
+                          <p className="project-card__tag">{project.tag}</p>
+                        )}
+                        {!project.featured && (
+                          <p className="project-card__tag project-card__tag--subtle">
+                            {project.tag}
+                          </p>
+                        )}
+                        <h3 className="project-card__title">{project.title}</h3>
+                        <p className="project-card__summary">{project.summary}</p>
+                        <p className="project-card__impact">{project.impact}</p>
+                        <div className="project-card__footer">
+                          <div className="project-card__tech">
+                            {project.tech.map((tech) => (
+                              <span key={`${project.id}-${tech}`} className="project-tech-pill">
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+                          <a
+                            href={project.linkHref}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="project-card__link"
+                          >
+                            {project.linkLabel}
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
             )}
           </>
         )}
