@@ -250,7 +250,7 @@ function App() {
               </div>
             </div>
 
-            {/* Experience cards list */}
+            {/* Experience section */}
             {selectedSection === 'Experience' && (
               <div className="experience-list">
                 {experienceData.map((exp) => (
@@ -277,7 +277,8 @@ function App() {
                 ))}
               </div>
             )}
-            {/* Skills cards as part of the chat flow – one white card per category */}
+
+            {/* Skills section */}
             {selectedSection === 'Skills' && (
               <>
                 {skillsByCategory.map((category) => (
